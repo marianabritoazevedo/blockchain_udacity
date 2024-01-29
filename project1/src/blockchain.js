@@ -69,8 +69,8 @@
             // Update block time
             block.time = new Date().getTime().toString().slice(0, -3);
             // Update previous hash
-            if(self.height > 0){
-                block.previousBlockHash = self[self.height-1].hash;
+            if(self.height >= 0){
+                block.previousBlockHash = self.chain[self.height].hash;
             }
             // Update current hash
             block.hash = SHA256(JSON.stringify(block)).toString();
