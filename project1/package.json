@@ -1,0 +1,21 @@
+{
+  "name": "project1",
+  "version": "1.0.0",
+  "description": "You are starting your journey as a Blockchain Developer, this project allows you to demonstrate that you are familiarized with the fundamentals concepts of a Blockchain platform. Concepts like:     - Block     - Blockchain     - Wallet     - Blockchain Identity     - Proof of Existance",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bitcoinjs-lib": "^6.1.5",
+    "bitcoinjs-message": "^2.2.0",
+    "body-parser": "^1.20.2",
+    "crypto-js": "^4.2.0",
+    "express": "^4.18.2",
+    "hex2ascii": "^0.0.3",
+    "morgan": "^1.10.0",
+    "tiny-secp256k1": "^2.2.3"
+  }
+}

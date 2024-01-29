@@ -16,7 +16,7 @@ There are many components involved in blockchain, among them, we can mention: tr
 
 Below are the projects developed during the Blockchain Developer Nanodegree:
 
-1️⃣ [ Create Your Own Private Blockchain](https://github.com/marianabritoazevedo/blockchain_udacity/project1)
+1️⃣ [ Create Your Own Private Blockchain](https://github.com/marianabritoazevedo/blockchain_udacity/tree/main/project1)
 
 2️⃣ [ Build CryptoStar Dapp on Ethereum]()
 
