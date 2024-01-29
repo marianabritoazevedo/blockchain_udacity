@@ -84,3 +84,11 @@ node app.js
 4- Using Postman Agent or Insomnia, use the server URL (localhost:8000) to test the API endpoints of this application.
 
 ### Testing application functionalities
+
+✅ http://localhost:8000/block/height/0
+
+✅ http://localhost:8000/requestValidation
+
+✅ http://localhost:8000/submitstar
+
+✅ http://localhost:8000/blocks/`your_address`
