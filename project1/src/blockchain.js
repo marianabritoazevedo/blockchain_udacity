@@ -78,11 +78,13 @@
             self.chain.push(block);
             // Update chain's height
             self.height += 1;
-            // Check if the block was added correctly
-            if(block === self.chain[self.height]){
+            // Check if the block was added correctly and check validateChain
+            let error = await self.validateChain()
+            if(block === self.chain[self.height] && error.length === 0){
                 resolve(block);
             }else{
                 reject(new Error("The block wasn't added into the blockchain"));
+                //console.log(error)
             }
          });
      }
@@ -124,9 +126,9 @@
          return new Promise(async (resolve, reject) => {
              let message_time = parseInt(message.split(':')[1]);
              let current_time = parseInt(new Date().getTime().toString().slice(0, -3));
-             const diff_seconds = current_time - message_time;
-             // Equivalence to 5 minutes
-             if(diff_seconds > 5*60*1000){
+             const diff_miliseconds = current_time - message_time;
+             // 300000 miliseconds = 5 minutes
+             if(diff_miliseconds < 300000){
                  if(bitcoinMessage.verify(message, address, signature)){
                      let newBlock = new BlockClass.Block({"address": address, "star": star});
                      await self._addBlock(newBlock);
@@ -167,7 +169,8 @@
      getBlockByHeight(height) {
          let self = this;
          return new Promise((resolve, reject) => {
-             let block = self.chain.filter(p => p.height === height)[0];
+             //let block = self.chain.filter(p => p.height === height)[0];
+             let block = self.chain.find(p => p.height === height);
              if(block){
                  resolve(block);
              } else {

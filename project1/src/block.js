@@ -39,9 +39,16 @@
          let self = this;
          return new Promise(async (resolve, reject) => {
              // Save in auxiliary variable the current block hash
-             current_hash = self.hash;                                
-             // Recalculate the hash of the Block
-             recalculated_hash = SHA256(JSON.stringify(self)).toString();
+             const current_hash = self.hash;                                
+             // Recalculate the hash of the Block. To do this, we need to create a temporary block
+             const temporary_block = {
+                 hash: null,
+                 height: self.height,
+                 body: self.body,
+                 time: self.time,
+                 previousBlockHash: self.previousBlockHash
+             }
+             const recalculated_hash = SHA256(JSON.stringify(temporary_block)).toString();
              // Comparing if the hashes changed
              if(current_hash === recalculated_hash){
                  // Returning the Block is valid
