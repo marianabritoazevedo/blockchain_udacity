@@ -126,9 +126,9 @@
          return new Promise(async (resolve, reject) => {
              let message_time = parseInt(message.split(':')[1]);
              let current_time = parseInt(new Date().getTime().toString().slice(0, -3));
-             const diff_miliseconds = current_time - message_time;
-             // 300000 miliseconds = 5 minutes
-             if(diff_miliseconds < 300000){
+             const diff_time = current_time - message_time;
+             // 300 seconds = 5 minutes
+             if(diff_time < 300){
                  if(bitcoinMessage.verify(message, address, signature)){
                      let newBlock = new BlockClass.Block({"address": address, "star": star});
                      await self._addBlock(newBlock);
