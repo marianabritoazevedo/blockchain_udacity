@@ -22,11 +22,11 @@
  *
  */
 
-// const HDWallet = require('truffle-hdwallet-provider');
-// const infuraKey = "fj4jll3k.....";
-//
-// const fs = require('fs');
-// const mnemonic = fs.readFileSync(".secret").toString().trim();
+const HDWalletProvider = require('truffle-hdwallet-provider');
+const fs = require('fs');
+
+const infuraKey = fs.readFileSync(".env-infura-key").toString().trim();
+const mnemonic = fs.readFileSync(".env-mnemonic").toString().trim();
 
 module.exports = {
   /**
@@ -51,6 +51,10 @@ module.exports = {
       port: 7545,            // Standard Ethereum port (default: none)
       network_id: "*",       // Any network (default: none)
     },
+    sepolia: {
+      provider: () => new HDWalletProvider(mnemonic, `https://sepolia.infura.io/v3/${infuraKey}`),
+      network_id: 11155111
+    }
 
     // Another network with more advanced options...
     // advanced: {
