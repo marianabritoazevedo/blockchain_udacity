@@ -82,7 +82,7 @@ App = {
         return App.initSupplyChain();
     },
 
-    getMetaskAccountID: function () {
+    getMetaskAccountID: function() {
         web3 = new Web3(App.web3Provider);
 
         // Retrieving accounts
@@ -175,7 +175,8 @@ App = {
                 App.originFarmInformation, 
                 App.originFarmLatitude, 
                 App.originFarmLongitude, 
-                App.productNotes
+                App.productNotes,
+                {from: App.metamaskAccountID}
             );
         }).then(function(result) {
             $("#ftc-item").text(result);
