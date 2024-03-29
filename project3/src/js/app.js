@@ -62,7 +62,7 @@ App = {
             App.web3Provider = window.ethereum;
             try {
                 // Request account access
-                await window.ethereum.enable();
+                await window.ethereum.request({ method: 'eth_requestAccounts' });
             } catch (error) {
                 // User denied account access...
                 console.error("User denied account access")
@@ -76,25 +76,15 @@ App = {
         else {
             App.web3Provider = new Web3.providers.HttpProvider('http://localhost:7545');
         }
-
         App.getMetaskAccountID();
-
         return App.initSupplyChain();
     },
 
-    getMetaskAccountID: function() {
+    getMetaskAccountID: async function() {
         web3 = new Web3(App.web3Provider);
-
-        // Retrieving accounts
-        web3.eth.getAccounts(function(err, res) {
-            if (err) {
-                console.log('Error:',err);
-                return;
-            }
-            console.log('getMetaskID:',res);
-            App.metamaskAccountID = res[0];
-
-        })
+        const accounts = await web3.eth.getAccounts();
+        console.log('getMetaskID:',accounts);
+        App.metamaskAccountID = accounts[0];
     },
 
     initSupplyChain: function () {
@@ -219,7 +209,7 @@ App = {
         var processId = parseInt($(event.target).data('id'));
 
         App.contracts.SupplyChain.deployed().then(function(instance) {
-            const productPrice = web3.toWei(1000000, "gwei");
+            const productPrice = web3.utils.toWei('1000000', 'gwei');
             console.log('productPrice',productPrice);
             return instance.sellItem(App.upc, App.productPrice, {from: App.metamaskAccountID});
         }).then(function(result) {
@@ -235,7 +225,7 @@ App = {
         var processId = parseInt($(event.target).data('id'));
 
         App.contracts.SupplyChain.deployed().then(function(instance) {
-            const walletValue = web3.toWei(2000000, "gwei");
+            const walletValue = web3.utils.toWei('2000000', 'gwei');
             return instance.buyItem(App.upc, {from: App.metamaskAccountID, value: walletValue});
         }).then(function(result) {
             $("#ftc-item").text(result);

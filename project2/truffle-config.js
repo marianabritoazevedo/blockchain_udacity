@@ -21,8 +21,8 @@
  * phrase from a file you've .gitignored so it doesn't accidentally become public.
  *
  */
-
-const HDWalletProvider = require('truffle-hdwallet-provider');
+//const HDWalletProvider = require('truffle-hdwallet-provider');
+const HDWalletProvider = require('@truffle/hdwallet-provider');
 const fs = require('fs');
 
 const infuraKey = fs.readFileSync(".env-infura-key").toString().trim();
@@ -38,7 +38,6 @@ module.exports = {
    *
    * $ truffle test --network <network-name>
    */
-
   networks: {
     // Useful for testing. The `development` name is special - truffle uses it by default
     // if it's defined here and no other network is specified at the command line.
@@ -53,9 +52,10 @@ module.exports = {
     },
     sepolia: {
       provider: () => new HDWalletProvider(mnemonic, `https://sepolia.infura.io/v3/${infuraKey}`),
-      network_id: 11155111
+      network_id: 11155111,
+      gas: 5500000, // Gas limit
+      gasPrice: 105694339, // Gas price
     }
-
     // Another network with more advanced options...
     // advanced: {
       // port: 8777,             // Custom port
@@ -65,7 +65,6 @@ module.exports = {
       // from: <address>,        // Account to send txs from (default: accounts[0])
       // websockets: true        // Enable EventEmitter interface for web3 (default: false)
     // },
-
     // Useful for deploying to a public network.
     // NB: It's important to wrap the provider as a function.
     // ropsten: {
@@ -76,7 +75,6 @@ module.exports = {
       // timeoutBlocks: 200,  // # of blocks before a deployment times out  (minimum/default: 50)
       // skipDryRun: true     // Skip dry run before migrations? (default: false for public nets )
     // },
-
     // Useful for private networks
     // private: {
       // provider: () => new HDWalletProvider(mnemonic, `https://network.io`),
@@ -84,12 +82,10 @@ module.exports = {
       // production: true    // Treats this network as if it was a public net. (default: false)
     // }
   },
-
   // Set default mocha options here, use special reporters etc.
   mocha: {
     // timeout: 100000
   },
-
   // Configure your compilers
   compilers: {
     solc: {
