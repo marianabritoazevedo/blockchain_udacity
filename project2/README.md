@@ -11,6 +11,12 @@ Solidity v0.5.16 (solc-js)
 Node v20.11.0
 Web3.js v1.10.0
 
+## Token
+Name: Star Notary Token
+Symbol: SNT
+
+## Informations to start this project
+
 ### Dependencies
 For this project, you will need to have:
 1. **Node and NPM** installed - NPM is distributed with [Node.js](https://www.npmjs.com/get-npm)
