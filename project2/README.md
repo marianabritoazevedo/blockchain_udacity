@@ -15,6 +15,17 @@ This Starter Code has already implemented the functionalities you implemented in
 - Name: Star Notary Token
 - Symbol: SNT
 
+## Addresses
+They are avaiable in [Sepolia Test network](https://sepolia.etherscan.io/)
+
+**1** Migrations
+- Transaction hash: 0x659786178630e0468fd32dcaa7fb916e2753d1c4de0350f13b5f7856db6a3e35
+- Contract address: 0xe7b10a87e108b95405Eb9AB4dB8159b2250dcD09
+
+**2** Star Notary
+- Transaction hash: 0x6fdf9200d58f62ed5b047b04c091bbe3eed607d6601221c74b487e475eb988fb
+- Contract address: 0x9A62686F4598243A6E279FBCB25C214D1d4C20A3
+
 ## Informations to start this project
 
 ### Dependencies
