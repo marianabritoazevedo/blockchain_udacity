@@ -5,15 +5,15 @@
 This Starter Code has already implemented the functionalities you implemented in the StarNotary (Version 2) exercise, and have comments in all the files you need to implement your tasks.
 
 ### Versions
-Truffle v5.11.5 (core: 5.11.5)
-Ganache v7.9.1
-Solidity v0.5.16 (solc-js)
-Node v20.11.0
-Web3.js v1.10.0
+- Truffle v5.11.5 (core: 5.11.5)
+- Ganache v7.9.1
+- Solidity v0.5.16 (solc-js)
+- Node v20.11.0
+- Web3.js v1.10.0
 
 ## Token
-Name: Star Notary Token
-Symbol: SNT
+- Name: Star Notary Token
+- Symbol: SNT
 
 ## Informations to start this project
 
