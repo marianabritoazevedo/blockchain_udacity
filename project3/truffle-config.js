@@ -1,9 +1,21 @@
+const HDWalletProvider = require('@truffle/hdwallet-provider');
+const fs = require('fs');
+
+const infuraKey = fs.readFileSync(".env-infura-key").toString().trim();
+const mnemonic = fs.readFileSync(".env-mnemonic").toString().trim();
+
 module.exports = {
   networks: {
     development: {
       host: "127.0.0.1",
       port: 7545,
       network_id: "*" // Match any network id
+    },
+    sepolia: {
+      provider: () => new HDWalletProvider(mnemonic, `https://sepolia.infura.io/v3/${infuraKey}`),
+      network_id: 11155111,
+      gas: 5500000, // Gas limit
+      gasPrice: 969977200, // Gas price
     }
   },
   compilers: {
